@@ -42,7 +42,7 @@ Web Serial requires `localhost` or HTTPS. Close the Arduino Serial Monitor befor
 
 The app opens the serial port at **115200 baud**, waits for `READY|BOMB_V1`, sends `RESET`, and requires `ACK|RESET`. Start Game stays disabled until that handshake finishes. The port picker belongs to the browser and cannot be replaced or auto-selected by the app.
 
-<a href="docs/images/connection.png"><img src="docs/images/connection.png" alt="Game setup screen with the simulated device connected" width="620"></a>
+<p align="center"><a href="docs/images/connection.png"><img src="docs/images/connection.png" alt="Game setup screen with the simulated device connected" width="620"></a></p>
 
 *Setup screen captured in development mock mode; it does not prove a physical Arduino connection.*
 
@@ -54,7 +54,7 @@ Run the development server and open `http://127.0.0.1:5173/?mock=1` (use the por
 
 The [prototype photo](docs/images/prototype.jpeg) shows the Uno, keypad, and three LEDs used for the game.
 
-<a href="docs/images/prototype.jpeg"><img src="docs/images/prototype.jpeg" alt="Physical prototype with Arduino Uno, 4×4 keypad and three lit LEDs" width="440"></a>
+<p align="center"><a href="docs/images/prototype.jpeg"><img src="docs/images/prototype.jpeg" alt="Physical prototype with Arduino Uno, 4×4 keypad and three lit LEDs" width="440"></a></p>
 
 **Use this pin map with the firmware in this repository:**
 
@@ -74,7 +74,7 @@ Put one suitable current-limiting resistor in series with **each** LED and obser
 
 > **Pinout difference:** this Tinkercad image shows the components, but its Arduino pin connections differ from the current firmware. Use the table above when wiring this version of the project.
 
-<a href="docs/images/wiring-reference.png"><img src="docs/images/wiring-reference.png" alt="Tinkercad circuit diagram showing an Arduino Uno, 4×4 keypad, three LEDs and buzzer" width="520"></a>
+<p align="center"><a href="docs/images/wiring-reference.png"><img src="docs/images/wiring-reference.png" alt="Tinkercad circuit diagram showing an Arduino Uno, 4×4 keypad, three LEDs and buzzer" width="520"></a></p>
 
 Check polarity, resistors, and shorts before connecting USB. The prototype photo and mock screenshots do not verify the wiring of another build.
 
