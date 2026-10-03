@@ -70,14 +70,11 @@ The [prototype photo](docs/images/prototype.jpeg) shows the Uno, keypad, and thr
 
 Put one suitable current-limiting resistor in series with **each** LED and observe LED polarity. Check your keypad's row and column terminal order; it varies by model. If necessary, change `ROW_PINS` and `COL_PINS` near the top of the firmware. The expected layout is `123A / 456B / 789C / *0#D`. Leave D0 and D1 free for USB serial.
 
-> **Wiring illustration caveat:** the supplied diagram shows the right component types but assigns different Arduino pins from the current firmware. Follow the table above for every connection; do not copy the diagram's pin positions unchanged.
+### Tinkercad circuit diagram
 
-<details>
-<summary>View the supplied wiring illustration</summary>
+> **Pinout difference:** this Tinkercad image shows the components, but its Arduino pin connections differ from the current firmware. Use the table above when wiring this version of the project.
 
-<img src="docs/images/wiring-reference.png" alt="Supplied Arduino, keypad, LED and buzzer wiring illustration with an outdated pin assignment" width="480">
-
-</details>
+<a href="docs/images/wiring-reference.png"><img src="docs/images/wiring-reference.png" alt="Tinkercad circuit diagram showing an Arduino Uno, 4×4 keypad, three LEDs and buzzer" width="520"></a>
 
 Check polarity, resistors, and shorts before connecting USB. The prototype photo and mock screenshots do not verify the wiring of another build.
 
