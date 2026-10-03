@@ -6,15 +6,23 @@ The browser verifies the Arduino connection before it enables **Start Game**. A 
 
 ## Gameplay screenshots
 
-| Decode a recovered file | Follow the wire sequence |
-|:---:|:---:|
-| <a href="docs/images/morse-puzzle.png"><img src="docs/images/morse-puzzle.png" alt="Morse puzzle with signal list, conversion chart and code terminal" width="410"></a> | <a href="docs/images/wire-cutting.jpg"><img src="docs/images/wire-cutting.jpg" alt="Wire-cutting challenge with target colors and numbered wires" width="410"></a> |
-| Morse puzzle and code terminal | Selective wire-cutting challenge |
+<table align="center">
+  <tr><th>Decode a recovered file</th><th>Follow the wire sequence</th></tr>
+  <tr>
+    <td align="center"><a href="docs/images/morse-puzzle.png"><img src="docs/images/morse-puzzle.png" alt="Morse puzzle with signal list, conversion chart and code terminal" width="410"></a></td>
+    <td align="center"><a href="docs/images/wire-cutting.jpg"><img src="docs/images/wire-cutting.jpg" alt="Wire-cutting challenge with target colors and numbered wires" width="410"></a></td>
+  </tr>
+  <tr><td align="center">Morse puzzle and code terminal</td><td align="center">Selective wire-cutting challenge</td></tr>
+</table>
 
-| React at the right moment | Secure a module |
-|:---:|:---:|
-| <a href="docs/images/synchronization-game.png"><img src="docs/images/synchronization-game.png" alt="Synchronization challenge with target key and green timing window" width="410"></a> | <a href="docs/images/module-complete.jpg"><img src="docs/images/module-complete.jpg" alt="Module completion confirmation on the game desktop" width="410"></a> |
-| Synchronization challenge | Module completion feedback |
+<table align="center">
+  <tr><th>React at the right moment</th><th>Secure a module</th></tr>
+  <tr>
+    <td align="center"><a href="docs/images/synchronization-game.png"><img src="docs/images/synchronization-game.png" alt="Synchronization challenge with target key and green timing window" width="410"></a></td>
+    <td align="center"><a href="docs/images/module-complete.jpg"><img src="docs/images/module-complete.jpg" alt="Module completion confirmation on the game desktop" width="410"></a></td>
+  </tr>
+  <tr><td align="center">Synchronization challenge</td><td align="center">Module completion feedback</td></tr>
+</table>
 
 Screenshots use the development mock keypad. In normal play, challenge input comes from the Arduino keypad.
 
@@ -58,15 +66,16 @@ The [prototype photo](docs/images/prototype.jpeg) shows the Uno, keypad, and thr
 
 **Use this pin map with the firmware in this repository:**
 
-| Arduino pin | Connection |
-|---|---|
-| D7, D8, D9, D10 | Keypad rows 1–4, in order |
-| D3, D4, D5, D6 | Keypad columns 1–4, in order |
-| A0 | Yellow LED |
-| A1 | Green LED |
-| A2 | Red LED |
-| A3 | Buzzer positive terminal |
-| GND | LED circuits and buzzer negative terminal |
+<table align="center">
+  <tr><th>Arduino pin</th><th>Connection</th></tr>
+  <tr><td>D7, D8, D9, D10</td><td>Keypad rows 1–4, in order</td></tr>
+  <tr><td>D3, D4, D5, D6</td><td>Keypad columns 1–4, in order</td></tr>
+  <tr><td>A0</td><td>Yellow LED</td></tr>
+  <tr><td>A1</td><td>Green LED</td></tr>
+  <tr><td>A2</td><td>Red LED</td></tr>
+  <tr><td>A3</td><td>Buzzer positive terminal</td></tr>
+  <tr><td>GND</td><td>LED circuits and buzzer negative terminal</td></tr>
+</table>
 
 Put one suitable current-limiting resistor in series with **each** LED and observe LED polarity. Check your keypad's row and column terminal order; it varies by model. If necessary, change `ROW_PINS` and `COL_PINS` near the top of the firmware. The expected layout is `123A / 456B / 789C / *0#D`. Leave D0 and D1 free for USB serial.
 
@@ -99,13 +108,14 @@ npm run build
 
 This checks TypeScript and writes a production build to `dist/`. Serve that directory from `localhost` or HTTPS for Web Serial access.
 
-| Path | Purpose |
-|---|---|
-| `arduino/bomb_controller/bomb_controller.ino` | Keypad scanning, LEDs, buzzer, and serial commands |
-| `src/game.ts` | Puzzle generation and game rules |
-| `src/minigames.ts` and `src/PhysicalMiniGame.tsx` | Physical challenges and their interface |
-| `src/serial.ts` | Browser–Arduino communication |
-| `src/style.css` | CRT-inspired visual design |
+<table align="center">
+  <tr><th>Path</th><th>Purpose</th></tr>
+  <tr><td><code>arduino/bomb_controller/bomb_controller.ino</code></td><td>Keypad scanning, LEDs, buzzer, and serial commands</td></tr>
+  <tr><td><code>src/game.ts</code></td><td>Puzzle generation and game rules</td></tr>
+  <tr><td><code>src/minigames.ts</code> and <code>src/PhysicalMiniGame.tsx</code></td><td>Physical challenges and their interface</td></tr>
+  <tr><td><code>src/serial.ts</code></td><td>Browser–Arduino communication</td></tr>
+  <tr><td><code>src/style.css</code></td><td>CRT-inspired visual design</td></tr>
+</table>
 
 ### Serial protocol
 
@@ -113,12 +123,13 @@ Messages are UTF-8 lines terminated by a newline. The Arduino sends `READY|BOMB_
 
 ## Troubleshooting
 
-| Symptom | Check |
-|---|---|
-| Port is busy | Close Arduino Serial Monitor and other tabs using the port. |
-| No port appears | Check the USB data cable, driver, and physical connection. |
-| No `READY|BOMB_V1` | Confirm the uploaded firmware and 115200 baud; reconnect the Uno. |
-| Port selection was canceled | Click **Connect Device** and choose the port again. |
-| Web Serial is unavailable | Use desktop Chrome or Edge on `localhost` or HTTPS. |
+<table align="center">
+  <tr><th>Symptom</th><th>Check</th></tr>
+  <tr><td>Port is busy</td><td>Close Arduino Serial Monitor and other tabs using the port.</td></tr>
+  <tr><td>No port appears</td><td>Check the USB data cable, driver, and physical connection.</td></tr>
+  <tr><td>No <code>READY|BOMB_V1</code></td><td>Confirm the uploaded firmware and 115200 baud; reconnect the Uno.</td></tr>
+  <tr><td>Port selection was canceled</td><td>Click <strong>Connect Device</strong> and choose the port again.</td></tr>
+  <tr><td>Web Serial is unavailable</td><td>Use desktop Chrome or Edge on <code>localhost</code> or HTTPS.</td></tr>
+</table>
 
 The browser mock and build verify software behavior only. Physical keypad, LED, and buzzer behavior require a connected Arduino build.
