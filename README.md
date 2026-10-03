@@ -1,10 +1,26 @@
 # Desarmar a Bomba
 
-Jogo de enigmas com interface CRT e Arduino Uno. Dispositivo exclusivamente cenográfico, sem explosivos. A conexão e a validação do Arduino acontecem antes de liberar INICIAR JOGO.
+Jogo de enigmas com interface CRT e controles em um Arduino Uno. O dispositivo é exclusivamente cenográfico, sem explosivos. A partida só começa após a conexão e a validação do Arduino.
+
+## Imagens do projeto
+
+**Protótipo físico.** Arduino Uno, teclado 4×4 e três LEDs montados para o jogo.
+
+![Foto do protótipo físico com Arduino Uno, teclado e três LEDs acesos](hardware-prototype.jpeg)
+
+**Minijogo: corte seletivo.** O painel mostra a ordem das cores; a resposta é dada no teclado físico.
+
+![Tela do minijogo Corte Seletivo](minigames-preview.jpg)
+
+**Módulo concluído.** A interface confirma o acerto antes de abrir o próximo arquivo.
+
+![Tela de confirmação de módulo concluído](module-success-preview.jpg)
+
+O [esquema elétrico de referência](wiring-reference.png) aparece na seção [Montagem elétrica](#montagem-elétrica). **A pinagem desenhada nessa imagem difere da pinagem do firmware atual.** Confira a tabela antes de ligar os componentes.
 
 ## Executar
 
-Requisitos: Node.js 22, Chrome ou Edge desktop, Arduino Uno com o firmware abaixo e cabo USB de dados.
+Requisitos: Node.js 22, Chrome ou Edge para desktop, Arduino Uno e cabo USB de dados. Para jogar com o hardware, carregue primeiro o firmware descrito em [Conectar Arduino](#conectar-arduino).
 
 ```powershell
 npm install
@@ -24,19 +40,30 @@ Abra o endereço mostrado pelo Vite. Para gerar a versão de produção: `npm ru
 
 A janela que lista portas COM pertence ao navegador. A Web Serial não permite alterar sua aparência, selecionar silenciosamente uma porta ou substituir a permissão por um modal próprio. O site estiliza a preparação, o progresso e os erros ao redor dessa janela.
 
-## Pinagem
+## Montagem elétrica
+
+Componentes: Arduino Uno, teclado matricial 4×4, três LEDs (vermelho, amarelo e verde), três resistores limitadores de corrente adequados aos LEDs, buzzer e cabo USB de dados.
+
+**Esquema fornecido com o projeto:**
+
+![Esquema elétrico de referência com Arduino Uno, teclado 4×4, LEDs e buzzer](wiring-reference.png)
+
+> **Atenção à pinagem:** a imagem mostra a disposição dos componentes, mas liga LEDs e teclado a pinos diferentes dos definidos em `arduino/bomb_controller/bomb_controller.ino`. Para usar o firmware deste repositório sem alterá-lo, **siga a tabela abaixo para cada fio**, não os pinos desenhados na imagem.
+
+### Pinagem do firmware atual
 
 | Pinos | Componente |
 |---|---|
-| D2, D3, D4, D5 | Linhas do teclado |
-| D6, D7, D8, D9 | Colunas do teclado |
-| D10, D11 | Reservados |
-| A0 | LED vermelho |
+| D7, D8, D9, D10 | Linhas 1, 2, 3 e 4 do teclado, nessa ordem |
+| D3, D4, D5, D6 | Colunas 1, 2, 3 e 4 do teclado, nessa ordem |
+| A0 | LED amarelo |
 | A1 | LED verde |
-| A2 | LED amarelo |
+| A2 | LED vermelho |
 | A3 | Buzzer |
 
-Use resistores apropriados nos LEDs e GND comum. Configure `ROW_PINS` e `COL_PINS` no início do firmware se a ordem dos fios do teclado exigir. Não use D0/D1. Layout: `123A / 456B / 789C / *0#D`. O firmware faz debounce e envia um evento por pressionamento.
+Para cada LED, ligue a saída indicada, o LED e um resistor limitador em série até GND, respeitando a polaridade. Ligue o positivo do buzzer a A3 e o negativo a GND. O teclado usa apenas as oito conexões de linhas e colunas da tabela; a ordem física dos terminais varia conforme o modelo. Confira a identificação do seu teclado e, se necessário, ajuste `ROW_PINS` e `COL_PINS` no início do firmware. O mapa de teclas esperado é `123A / 456B / 789C / *0#D`. Não use D0/D1, reservados para a serial USB.
+
+Antes de conectar o USB, confira polaridade, resistores e ausência de curto. O firmware faz debounce e envia um evento por pressionamento.
 
 ## Jogar
 

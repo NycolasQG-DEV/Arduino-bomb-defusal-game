@@ -1,14 +1,14 @@
 // Arduino Uno: controlador de um dispositivo exclusivamente cenográfico.
-// Portas digitais utilizadas: 2 a 12 (e A3 para buzzer)
+// Portas utilizadas: D3 a D10 para teclado, A0 a A2 para LEDs e A3 para buzzer.
 
 // -------------------------------------------------------------------
-// MAPEAMENTO DAS PORTAS DIGITAIS (2 A 12):
-// Pino 2            -> LED Vermelho (LED_RED)
-// Pinos 3, 4, 5, 6  -> Colunas 1, 2, 3, 4 do Teclado (C1, C2, C3, C4)
-// Pinos 7, 8, 9, 10 -> Linhas 1, 2, 3, 4 do Teclado (R1, R2, R3, R4)
-// Pino 11           -> LED Amarelo (LED_YELLOW)
-// Pino 12           -> LED Verde (LED_GREEN)
-// Pino A3 (ou 13)   -> Buzzer
+// MAPEAMENTO UTILIZADO PELO FIRMWARE:
+// D3, D4, D5, D6   -> Colunas 1, 2, 3, 4 do teclado (C1, C2, C3, C4)
+// D7, D8, D9, D10  -> Linhas 1, 2, 3, 4 do teclado (R1, R2, R3, R4)
+// A0               -> LED amarelo (LED_YELLOW)
+// A1               -> LED verde (LED_GREEN)
+// A2               -> LED vermelho (LED_RED)
+// A3               -> Buzzer
 // -------------------------------------------------------------------
 
 const byte ROW_PINS[4] = {7, 8, 9, 10};
